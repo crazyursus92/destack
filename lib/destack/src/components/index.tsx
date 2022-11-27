@@ -1,16 +1,15 @@
 import React, { FC, useEffect, useState, useRef } from 'react'
 import { ContentProviderProps } from '../../types'
 import { ToastContainer } from './toast'
-import Logo from './icons/Logo'
+import { Logo } from './icons/Logo'
 
 import devStyles from '../css/dist/dev.module.css'
 import prodStyles from '../css/prod.module.css'
 
 import { tailwindCssUrl } from '../../server/config'
-import ArrowLeft from './icons/ArrowLeft'
+import { ArrowLeft } from './icons/ArrowLeft'
 import { MenuItem } from './MenuItem'
 import { EditorProvider } from './EditorProvider/EditorProvider'
-import { DevicesControls } from './DeviceControls/DeviceControls'
 import { Header } from './Header/Header'
 import { PanelTabs } from './PanelTabs/PanelTabs'
 
