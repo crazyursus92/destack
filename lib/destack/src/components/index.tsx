@@ -1,11 +1,18 @@
 import React, { FC, useEffect, useState, useRef } from 'react'
 import { ContentProviderProps } from '../../types'
 import { ToastContainer } from './toast'
+import Logo from './icons/Logo'
 
-import devStyles from '../css/dev.module.css'
+import devStyles from '../css/dist/dev.module.css'
 import prodStyles from '../css/prod.module.css'
 
 import { tailwindCssUrl } from '../../server/config'
+import ArrowLeft from './icons/ArrowLeft'
+import { MenuItem } from './MenuItem'
+import { EditorProvider } from './EditorProvider/EditorProvider'
+import { DevicesControls } from './DeviceControls/DeviceControls'
+import { Header } from './Header/Header'
+import { PanelTabs } from './PanelTabs/PanelTabs'
 
 const ContentProvider: FC<ContentProviderProps> = ({
   data,
@@ -15,6 +22,7 @@ const ContentProvider: FC<ContentProviderProps> = ({
   const mounted = useRef<boolean>(false)
   const [css, setCss] = useState<string | undefined>()
   const [html, setHtml] = useState<string | undefined>()
+  const [editor, setEditor] = useState<any>()
 
   const isDev = !data
   const showEditor = isDev || showEditorInProd
@@ -26,7 +34,11 @@ const ContentProvider: FC<ContentProviderProps> = ({
     if (mounted.current) return
 
     if (showEditor) {
-      import('./initEditor').then((c) => c.initEditor(startServer, standaloneServer))
+      import('./initEditor')
+        .then((c) => c.initEditor(startServer, standaloneServer))
+        .then((e) => {
+          setEditor(e)
+        })
     } else {
       const pathNameWindows =
         location.pathname === '/' ? '\\default.json' : `${location.pathname}.json`
@@ -38,7 +50,6 @@ const ContentProvider: FC<ContentProviderProps> = ({
         setHtml(content.html)
       }
     }
-
     mounted.current = true
   }, [])
 
@@ -46,7 +57,36 @@ const ContentProvider: FC<ContentProviderProps> = ({
     return (
       <div style={{ height: '100%', margin: '0 auto' }}>
         <style>{devStyles}</style>
-        <div id="gjs"></div>
+        <div className="flex flex-col h-full">
+          <EditorProvider editor={editor}>
+            <Header />
+          </EditorProvider>
+
+          <div className="flex px-8 py-6 hidden shadow-sm justify-between flex-shrink-0 z-10 relative">
+            <div className="flex items-center">
+              <a href="/" className="mr-10">
+                <Logo />
+              </a>
+              <MenuItem href="/" icon={<ArrowLeft />} disabled={true} className="mr-6">
+                Back
+              </MenuItem>
+              <MenuItem>My Website</MenuItem>
+            </div>
+            <div id="panel-devices" className="flex items-center relative"></div>
+            <div className="flex items-center relative">
+              <div id="panel-options"></div>
+            </div>
+          </div>
+          <div className="flex h-full" id="editor-content">
+            <div className="flex w-sidebar p-3 bg-panel overflow-auto  scrollbar-hide">
+              <div id="blocks"></div>
+            </div>
+            <div id="gjs"></div>
+            <div className="flex w-sidebar bg-panel overflow-auto  scrollbar-hide">
+              <PanelTabs />
+            </div>
+          </div>
+        </div>
       </div>
     )
   else

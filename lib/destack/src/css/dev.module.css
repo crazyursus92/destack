@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .gjs-one-bg {
   background-color: white !important;
 }
@@ -7,7 +11,7 @@
 }
 
 .gjs-two-color {
-  color: #6366f1 !important;
+  /* color: #6366f1 !important; */
 }
 
 .gjs-four-color {
@@ -95,4 +99,107 @@ span.gjs-pn-btn.fa.fa-mobile {
 
 .gjs-mdl-dialog {
   max-width: 600px !important;
+}
+
+.btn {
+  @apply px-5 py-3 rounded-btn text-white inline-flex bg-black transition-all text-sm font-semibold hover:bg-gray-800 inline-flex items-center justify-center;
+}
+
+.btn-left-icon {
+  @apply pl-11 bg-no-repeat relative;
+}
+
+.btn-left-icon::before {
+  content: '';
+  transform: translateY(-50%);
+  @apply absolute left-4 top-2/4 w-5 h-5  bg-no-repeat bg-contain;
+}
+
+.icon-btn {
+  @apply w-5 h-5 relative cursor-pointer inline-flex items-center justify-center;
+}
+
+.btn-default-disabled {
+  @apply opacity-30 hover:opacity-50;
+}
+
+.btn-default-disabled.btn-active,
+.btn-default-disabled.gjs-pn-active {
+  @apply opacity-100;
+}
+
+.icon-btn::before {
+  content: '';
+  @apply w-full h-full bg-no-repeat bg-contain bg-center;
+}
+
+.btn-accent {
+  @apply bg-accent hover:bg-accent;
+}
+
+#blocks .gjs-title {
+  @apply text-sm bg-panel font-medium border-panelBorder  bg-transparent relative !important;
+}
+
+#blocks .gjs-block-category {
+  @apply text-panelInactiveItem bg-panel;
+}
+
+#blocks .gjs-block-category.gjs-open {
+  @apply text-white;
+}
+
+#blocks .gjs-open .gjs-title::before {
+  content: '';
+  @apply w-1 h-6 absolute left-0 top-1/2 bg-accent -translate-y-1/2;
+}
+
+#blocks .gjs-caret-icon {
+  @apply absolute right-0 top-1/2 -translate-y-1/2;
+}
+
+#blocks {
+  @apply w-full;
+}
+
+#blocks .gjs-blocks-c {
+  @apply bg-panel grid grid-cols-2 gap-4 py-2;
+}
+
+#editor-content .gjs-cv-canvas {
+  @apply top-0 h-full w-full;
+}
+
+#layers .gjs-layer-title {
+  @apply text-sm bg-panel font-normal border-panelBorder  bg-transparent relative !important;
+}
+
+#layers .gjs-no-app {
+  @apply h-auto;
+}
+
+#layers .gjs-one-bg {
+  @apply !bg-panel;
+}
+
+#layers .gjs-layer-caret {
+  @apply absolute w-5 h-5 -translate-y-1/2 top-1/2 left-0 -translate-x-full rotate-180;
+}
+
+#layers .gjs-layer-name,
+#layers .gjs-layer-title-inn {
+  @apply !text-sm;
+}
+
+#layers .gjs-layer-count:not(:empty) {
+  @apply w-4.5 h-4.5 rounded-full text-white bg-panelActive inline-flex justify-center items-center;
+}
+
+#layers .gjs-selected {
+  @apply relative;
+}
+
+#layers .gjs-selected::before {
+  content: '';
+  @apply w-1 h-6 absolute left-0 top-1/2 bg-accent -translate-y-1/2;
 }

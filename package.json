@@ -19,8 +19,7 @@
     "export": "cd lib/destack && npm run export",
     "publish": "cd lib/destack && npm publish",
     "publish:alpha": "cd lib/destack && npm run publish:alpha",
-    "publish:beta": "cd lib/destack && npm run publish:beta",
-    "prepare": "husky install"
+    "publish:beta": "cd lib/destack && npm run publish:beta"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.25.0",
@@ -31,7 +30,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
     "jest": "^27.0.3",
     "jest-puppeteer": "^5.0.4",
     "lint-staged": "^11.0.0",

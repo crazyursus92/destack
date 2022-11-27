@@ -1,4 +1,4 @@
-import { loadPanels } from '../lib/panels'
+import { getDefaultPanelConfig, loadPanels } from '../lib/panels'
 import { loadTraits } from '../lib/traits'
 import { loadComponents } from '../lib/components'
 import { loadBlocks } from '../lib/blocks'
@@ -11,6 +11,7 @@ import { standaloneServerPort as port } from '../../server/config'
 
 const uploadFile = (e, editor, standaloneServer): void => {
   const files = e.dataTransfer ? e.dataTransfer.files : e.target.files
+  console.log(files, 'uploadFile')
   const formData = new FormData()
   for (const i in files) {
     formData.append('file-' + i, files[i])
@@ -24,21 +25,23 @@ const uploadFile = (e, editor, standaloneServer): void => {
     })
 }
 
-const initEditor = async (startServer = true, standaloneServer): Promise<void> => {
+const initEditor = async (startServer = true, standaloneServer): Promise<any> => {
   const grapesjs = await import('grapesjs')
 
   // for 'npm run test' only
   globalThis.grapesjs = grapesjs
 
   if (startServer) {
-    assetManagerOptions.uploadFile = (e: ChangeEvent<HTMLInputElement>) =>
+    assetManagerOptions.uploadFile = (e: ChangeEvent<HTMLInputElement>) => {
+      console.log(e, editor, standaloneServer, 'assetManagerOptions.uploadFile')
       uploadFile(e, editor, standaloneServer)
+    }
     editorOptions.assetManager = assetManagerOptions
   }
 
   // need var intead of const so it's global
   // and its accessible in uploadFile function
-  var editor = grapesjs.init(editorOptions)
+  const editor = grapesjs.init(editorOptions)
 
   loadTraits(editor)
   loadPanels(editor, startServer)
@@ -49,6 +52,8 @@ const initEditor = async (startServer = true, standaloneServer): Promise<void> =
 
   if (startServer) handleEvents(editor, standaloneServer)
   if (startServer) loadTemplate(editor, standaloneServer)
+
+  return editor
 }
 
 const loadTemplate = async (editor, standaloneServer): Promise<void> => {
@@ -77,7 +82,21 @@ const editorOptions = {
   selectorManager: { escapeName },
   container: '#gjs',
   height: '100%',
+  panels: getDefaultPanelConfig(),
+  layerManager: {
+    appendTo: '#layers',
+  },
+  traitManager: {
+    appendTo: '#traits',
+  },
+  styleManager: {
+    appendTo: '#styles',
+  },
   storageManager: { autoload: false },
+  blockManager: {
+    appendTo: '#blocks',
+    custom: true,
+  },
   showDevices: false,
   traitsEditor: true,
   assetManager: assetManagerOptions,
