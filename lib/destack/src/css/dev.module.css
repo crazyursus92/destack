@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.gjs-one-bg {
-  background-color: white !important;
-}
+
 .gjs-three-bg {
-  color: white !important;
-  background-color: #6366f1 !important;
+  @apply !bg-accent !text-white rounded-2xl;
 }
 
 .gjs-two-color {
@@ -15,20 +12,42 @@
 }
 
 .gjs-four-color {
-  color: #6366f1 !important;
+  @apply !text-accent;
 }
 .gjs-four-color-h:hover {
   color: #6366f1 !important;
   background-color: #f1f1f1 !important;
 }
 
-.gjs-field {
-  color: #6366f1 !important;
-  background-color: #f1f1f1 !important;
+.gjs-color-warn {
+  @apply text-white;
+}
+.gjs-four-color {
+  @apply !text-white;
 }
 
+#custom-editor .gjs-sm-sector .gjs-sm-field input, #custom-editor .gjs-clm-tags .gjs-sm-field input,#custom-editor  .gjs-sm-sector .gjs-clm-select input, #custom-editor .gjs-clm-tags .gjs-clm-select input,#custom-editor .gjs-sm-sector .gjs-clm-field input, #custom-editor .gjs-clm-tags .gjs-clm-field input, #custom-editor .gjs-sm-sector .gjs-sm-field select, #custom-editor .gjs-clm-tags .gjs-sm-field select, #custom-editor .gjs-sm-sector .gjs-clm-select select, #custom-editor .gjs-clm-tags .gjs-clm-select select, #custom-editor .gjs-sm-sector .gjs-clm-field select, #custom-editor .gjs-clm-tags .gjs-clm-field select,
+.gjs-field, .gjs-field-integer, #styles .gjs-sm-sector .gjs-sm-field input {
+  border: 1px solid #3F4347 !important;
+  @apply !border-fieldBorder !border !rounded-lg !text-white !bg-fieldBg;
+}
+#styles .gjs-field-units {
+  @apply !right-0 !rounded-r-lg !border-fieldBorder !text-white bg-fieldBg;
+}
+
+#styles .gjs-field-units select {
+  @apply !rounded-r-lg !border-fieldBorder !text-white !bg-fieldBg;
+} 
+
+#styles .gjs-field-units + .gjs-field-arrows {
+  @apply hidden;
+}
 .gjs-field-checkbox input:checked + .gjs-chk-icon {
-  border-color: rgba(99, 102, 241, 0.5); /* #6366f1 */
+  @apply !border-accent;
+}
+
+.gjs-field-checkbox {
+  @apply !rounded-sm;
 }
 
 .gjs-category-title,
@@ -158,32 +177,38 @@ span.gjs-pn-btn.fa.fa-mobile {
   @apply absolute right-0 top-1/2 -translate-y-1/2;
 }
 
+#blocks .gjs-blocks-c {
+  @apply bg-panel grid grid-cols-2 gap-4 py-2;
+}
+
 #blocks {
   @apply w-full;
 }
 
-#blocks .gjs-blocks-c {
-  @apply bg-panel grid grid-cols-2 gap-4 py-2;
-}
+
 
 #editor-content .gjs-cv-canvas {
   @apply top-0 h-full w-full;
 }
 
 #layers .gjs-layer-title {
-  @apply text-sm bg-panel font-normal border-panelBorder  bg-transparent relative !important;
+  @apply text-xs bg-panel font-normal border-panelBorder  bg-transparent relative !important;
 }
 
 #layers .gjs-no-app {
   @apply h-auto;
 }
 
-#layers .gjs-one-bg {
+#layers .gjs-one-bg, #selectors .gjs-one-bg, #styles .gjs-one-bg {
   @apply !bg-panel;
 }
 
 #layers .gjs-layer-caret {
-  @apply absolute w-5 h-5 -translate-y-1/2 top-1/2 left-0 -translate-x-full rotate-180;
+  @apply absolute text-xs w-5 h-5 origin-center -translate-y-1/2 top-1/2 -translate-x-1/2;
+}
+
+#layers .gjs-layer-caret.fa-chevron-right {
+  @apply absolute;
 }
 
 #layers .gjs-layer-name,
@@ -192,14 +217,68 @@ span.gjs-pn-btn.fa.fa-mobile {
 }
 
 #layers .gjs-layer-count:not(:empty) {
-  @apply w-4.5 h-4.5 rounded-full text-white bg-panelActive inline-flex justify-center items-center;
+  @apply w-4.5 h-4.5  rounded-full text-white bg-panelActive inline-flex justify-center items-center;
 }
 
 #layers .gjs-selected {
   @apply relative;
 }
 
-#layers .gjs-selected::before {
+#layers .gjs-selected .gjs-layer-title::before {
   content: '';
   @apply w-1 h-6 absolute left-0 top-1/2 bg-accent -translate-y-1/2;
+}
+
+#layers .gjs-layer-vis, #layers .gjs-layer-move {
+  @apply hidden;
+}
+
+#traits .gjs-trt-traits {
+  @apply !bg-panel;
+}
+
+#traits .gjs-label-wrp {
+  @apply w-full text-white text-xs mb-2;
+}
+
+#traits .gjs-trt-trait {
+  @apply flex-wrap px-0;
+}
+
+#traits .gjs-field-svg-next > div {
+  @apply !bg-panel;
+}
+
+#traits .svg-next__svg-inputs {
+  @apply !bg-panel;
+}
+
+#gjs .gjs-pn-panels {
+  @apply !hidden;
+}
+
+
+#styles .gjs-sm-title {
+  @apply text-sm bg-panel font-medium border-panelBorder  bg-transparent relative !important;
+}
+
+#styles .gjs-sm-block-category {
+  @apply text-panelInactiveItem bg-panel;
+}
+
+#styles .gjs-sm-block-category.gjs-open {
+  @apply text-white;
+}
+
+#styles .gjs-sm-open .gjs-title::before {
+  content: '';
+  @apply w-1 h-6 absolute left-0 top-1/2 bg-accent -translate-y-1/2;
+}
+
+#styles .gjs-sm-caret-icon {
+  @apply absolute right-0 top-1/2 -translate-y-1/2;
+}
+
+#styles .gjs-sm-blocks-c {
+  @apply bg-panel grid grid-cols-2 gap-4 py-2;
 }

@@ -54,7 +54,7 @@ const ContentProvider: FC<ContentProviderProps> = ({
 
   if (showEditor)
     return (
-      <div style={{ height: '100%', margin: '0 auto' }}>
+      <div id="custom-editor" style={{ height: '100vh', margin: '0 auto' }}>
         <style>{devStyles}</style>
         <div className="flex flex-col h-full">
           <EditorProvider editor={editor}>
@@ -76,7 +76,7 @@ const ContentProvider: FC<ContentProviderProps> = ({
               <div id="panel-options"></div>
             </div>
           </div>
-          <div className="flex h-full" id="editor-content">
+          <div className="flex h-[calc(100%-92px)]" id="editor-content">
             <div className="flex w-sidebar p-3 bg-panel overflow-auto  scrollbar-hide">
               <div id="blocks"></div>
             </div>

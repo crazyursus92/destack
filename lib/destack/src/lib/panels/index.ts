@@ -13,7 +13,7 @@ const colorList = [
 import hyperuiLogo from '../../images/hyperui.png'
 import merakiLogo from '../../images/meraki.png'
 import tailblocksLogo from '../../images/tailblocks.png'
-import rendo from '../../images/icons/rendo.svg'
+
 import { loadBasicBlocks } from '../../lib/blocks/basic'
 import { loadMerakiUiLightBlocks } from '../../lib/blocks/merakiui-light'
 import { loadTailwindBlocks } from '../../lib/blocks/tailblocks'

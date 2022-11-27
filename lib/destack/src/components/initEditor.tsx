@@ -79,10 +79,9 @@ const assetManagerOptions = {
 }
 
 const editorOptions = {
-  selectorManager: { escapeName },
+  selectorManager: { escapeName, appendTo: '#selectors' },
   container: '#gjs',
   height: '100%',
-  panels: getDefaultPanelConfig(),
   layerManager: {
     appendTo: '#layers',
   },
@@ -91,6 +90,86 @@ const editorOptions = {
   },
   styleManager: {
     appendTo: '#styles',
+    sectors: [
+      {
+        name: 'General',
+        open: false,
+        // properties: [
+        //   {
+        //     name: 'Position',
+        //     property: 'position',
+        //     type: 'select',
+        //     default: 'static',
+        //     options: [
+        //       { id: 'static', label: 'static' },
+        //       { id: 'relative', label: 'relative' },
+        //       { id: 'absolute', label: 'absolute' },
+        //       { id: 'fixed', label: 'fixed' },
+        //     ],
+        //   },
+        // ],
+        buildProps: ['float', 'position', 'display', 'top', 'right', 'left', 'bottom'],
+      },
+      {
+        name: 'Flex',
+        open: false,
+        buildProps: [
+          'flex-direction',
+          'flex-wrap',
+          'justify-content',
+          'align-items',
+          'align-content',
+          'order',
+          'flex-basis',
+          'flex-grow',
+          'flex-shrink',
+          'align-self',
+        ],
+      },
+      {
+        name: 'Dimension',
+        open: false,
+        buildProps: ['width', 'height', 'max-width', 'min-height', 'margin', 'padding'],
+      },
+      {
+        name: 'Typography',
+        open: false,
+        buildProps: [
+          'font-family',
+          'font-size',
+          'font-weight',
+          'letter-spacing',
+          'color',
+          'line-height',
+          'text-align',
+          'text-shadow',
+        ],
+        properties: [
+          {
+            property: 'text-align',
+            list: [
+              { value: 'left', className: 'fa fa-align-left' },
+              { value: 'center', className: 'fa fa-align-center' },
+              { value: 'right', className: 'fa fa-align-right' },
+              { value: 'justify', className: 'fa fa-align-justify' },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'Decorations',
+        open: false,
+        buildProps: [
+          'border-radius-c',
+          'background-color',
+          'border-radius',
+          'border',
+          'box-shadow',
+          'background',
+        ],
+      },
+      { name: 'Extra', open: false, buildProps: ['transition', 'perspective', 'transform'] },
+    ],
   },
   storageManager: { autoload: false },
   blockManager: {
