@@ -26,6 +26,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "clsx": "^1.2.1",
     "concurrently": "^6.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -61,5 +62,7 @@
     "type": "git",
     "url": "https://github.com/LiveDuo/destack.git"
   },
-  "files": [ "build" ]
+  "files": [
+    "build"
+  ]
 }
