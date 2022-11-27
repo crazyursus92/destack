@@ -27,7 +27,7 @@ export const DeviceControls: React.FC = () => {
   )
 
   return (
-    <div className="flex gap-4 pl-48">
+    <div className="flex gap-6 pl-48">
       <IconButton
         onClick={() => onChangeDevice(Devices.Desktop)}
         isActive={currentDevice === Devices.Desktop}
