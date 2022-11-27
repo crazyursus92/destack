@@ -13,7 +13,7 @@ const colorList = [
 import hyperuiLogo from '../../images/hyperui.png'
 import merakiLogo from '../../images/meraki.png'
 import tailblocksLogo from '../../images/tailblocks.png'
-
+import rendo from '../../images/icons/rendo.svg'
 import { loadBasicBlocks } from '../../lib/blocks/basic'
 import { loadMerakiUiLightBlocks } from '../../lib/blocks/merakiui-light'
 import { loadTailwindBlocks } from '../../lib/blocks/tailblocks'
@@ -218,110 +218,122 @@ const updateTheme = (editor, loadTheme) => {
   loadTheme(editor)
 }
 
+export const getDefaultPanelConfig = () => {
+  const swv = 'sw-visibility'
+  const expt = 'export-template'
+  const osm = 'open-sm'
+  const otm = 'open-tm'
+  const ola = 'open-layers'
+  const obl = 'open-blocks'
+  const ful = 'fullscreen'
+  const prv = 'preview'
+
+  return {
+    stylePrefix: 'pn-',
+
+    // Default panels fa-sliders for features
+    defaults: [],
+
+    // Editor model
+    em: null,
+
+    // Delay before show children buttons (in milliseconds)
+    delayBtnsShow: 300,
+  }
+}
+
 export const loadPanels = (editor, isDev) => {
   // Show Style Manager
-  editor.on('component:selected', () => {
-    const openSmBtn = editor.Panels.getButton('views', 'open-sm')
-    const openLayersBtn = editor.Panels.getButton('views', 'open-layers')
+  // editor.on('component:selected', () => {
+  //   const openSmBtn = editor.Panels.getButton('views', 'open-sm')
+  //   const openLayersBtn = editor.Panels.getButton('views', 'open-layers')
+  //   // Don't switch when the Layer Manager is on or there is no selected component
+  //   if ((!openLayersBtn || !openLayersBtn.get('active')) && editor.getSelected()) {
+  //     openSmBtn && openSmBtn.set('active', 1)
+  //   }
+  // })
+  // // Activate Blocks Manager
+  editor.on('load', () => {})
+  // // Connfig Commands
 
-    // Don't switch when the Layer Manager is on or there is no selected component
-    if ((!openLayersBtn || !openLayersBtn.get('active')) && editor.getSelected()) {
-      openSmBtn && openSmBtn.set('active', 1)
-    }
-  })
+  window.__EDITOR = editor
 
-  // Activate Blocks Manager
-  editor.on('load', () => {
-    const blockBtn = editor.Panels.getButton('views', 'open-blocks')
-    blockBtn.set('active', 1)
-  })
-
-  // Connfig Commands
-  editor.Commands.add('set-device-desktop', (e) => e.setDevice('Desktop'))
-  editor.Commands.add('set-device-tablet', (e) => e.setDevice('Tablet'))
-  editor.Commands.add('set-device-mobile', (e) => e.setDevice('Mobile portrait'))
-
-  editor.Commands.add(
-    'canvas-clear',
-    (e) => confirm(txtConfirm) && e.runCommand('core:canvas-clear'),
-  )
-
-  const devicePanel = editor.Panels.getPanel('commands')
-  devicePanel.get('buttons').add([
-    { id: 'deviceDesktop', command: 'set-device-desktop', className: 'fa fa-desktop' },
-    { id: 'deviceTablet', command: 'set-device-tablet', className: 'fa fa-tablet' },
-    { id: 'deviceMobile', command: 'set-device-mobile', className: 'fa fa-mobile' },
-  ])
-
+  // editor.Commands.add(
+  //   'canvas-clear',
+  //   (e) => confirm(txtConfirm) && e.runCommand('core:canvas-clear'),
+  // )
+  // const devicePanel = editor.Panels.getPanel('commands')
+  // devicePanel.get('buttons').add([
+  //   { id: 'deviceDesktop', command: 'set-device-desktop', className: 'fa fa-desktop' },
+  //   { id: 'deviceTablet', command: 'set-device-tablet', className: 'fa fa-tablet' },
+  //   { id: 'deviceMobile', command: 'set-device-mobile', className: 'fa fa-mobile' },
+  // ])
   // Config Buttons
-  editor.Panels.removeButton('options', 'export-template')
-  editor.Panels.getButton('options', 'sw-visibility').set('active', false)
-  if (!isDev)
-    editor.Panels.addButton('options', {
-      id: 'export-template',
-      className: 'fa fa-code',
-      command: (e) => e.runCommand('export-template'),
-      attributes: { title: 'View Code' },
-    })
-  editor.Panels.addButton('options', {
-    id: 'undo',
-    className: 'fa fa-undo',
-    command: (e) => e.runCommand('core:undo'),
-    attributes: { title: 'Undo' },
-  })
-  editor.Panels.addButton('options', {
-    id: 'redo',
-    className: 'fa fa-repeat',
-    command: 'core:redo',
-    attributes: { title: 'Redo' },
-  })
-  editor.Panels.addButton('options', {
-    id: 'update-color',
-    className: 'fa fa-photo',
-    command: 'open-update-color',
-    attributes: {
-      title: 'Color',
-      'data-tooltip-pos': 'bottom',
-    },
-  })
-  editor.Panels.addButton('options', {
-    id: 'update-theme',
-    className: 'fa fa-object-group',
-    command: 'open-update-theme',
-    attributes: {
-      title: 'Theme',
-      'data-tooltip-pos': 'bottom',
-    },
-  })
-  editor.Panels.addButton('options', {
-    id: 'canvas-clear',
-    className: 'fa fa-trash',
-    command: (e) => e.runCommand('canvas-clear'),
-  })
-
-  editor.Panels.removeButton('options', 'fullscreen')
-
-  // Add color command
-  editor.Commands.add('open-update-color', {
-    run(_, sender) {
-      sender.set('active', 0)
-      const md = editor.Modal
-      md.setTitle('Change Color')
-      const container = getUpdateColorModal(editor)
-      md.setContent(container)
-      md.open()
-    },
-  })
-
-  // Add theme command
-  editor.Commands.add('open-update-theme', {
-    run(_, sender) {
-      sender.set('active', 0)
-      const md = editor.Modal
-      md.setTitle('Change Theme')
-      const container = getUpdateThemeModal(editor)
-      md.setContent(container)
-      md.open()
-    },
-  })
+  //editor.Panels.removeButton('options', 'export-template')
+  // editor.Panels.getButton('options', 'sw-visibility').set('active', false)
+  // if (!isDev)
+  //   editor.Panels.addButton('options', {
+  //     id: 'export-template',
+  //     className: 'fa fa-code',
+  //     command: (e) => e.runCommand('export-template'),
+  //     attributes: { title: 'View Code' },
+  //   })
+  // editor.Panels.addButton('options', {
+  //   id: 'undo',
+  //   className: 'fa fa-undo',
+  //   command: (e) => e.runCommand('core:undo'),
+  //   attributes: { title: 'Undo' },
+  // })
+  // editor.Panels.addButton('options', {
+  //   id: 'redo',
+  //   className: 'fa fa-repeat',
+  //   command: 'core:redo',
+  //   attributes: { title: 'Redo' },
+  // })
+  // editor.Panels.addButton('options', {
+  //   id: 'update-color',
+  //   className: 'fa fa-photo',
+  //   command: 'open-update-color',
+  //   attributes: {
+  //     title: 'Color',
+  //     'data-tooltip-pos': 'bottom',
+  //   },
+  // })
+  // editor.Panels.addButton('options', {
+  //   id: 'update-theme',
+  //   className: 'fa fa-object-group',
+  //   command: 'open-update-theme',
+  //   attributes: {
+  //     title: 'Theme',
+  //     'data-tooltip-pos': 'bottom',
+  //   },
+  // })
+  // editor.Panels.addButton('options', {
+  //   id: 'canvas-clear',
+  //   className: 'fa fa-trash',
+  //   command: (e) => e.runCommand('canvas-clear'),
+  // })
+  // editor.Panels.removeButton('options', 'fullscreen')
+  // // Add color command
+  // editor.Commands.add('open-update-color', {
+  //   run(_, sender) {
+  //     sender.set('active', 0)
+  //     const md = editor.Modal
+  //     md.setTitle('Change Color')
+  //     const container = getUpdateColorModal(editor)
+  //     md.setContent(container)
+  //     md.open()
+  //   },
+  // })
+  // // Add theme command
+  // editor.Commands.add('open-update-theme', {
+  //   run(_, sender) {
+  //     sender.set('active', 0)
+  //     const md = editor.Modal
+  //     md.setTitle('Change Theme')
+  //     const container = getUpdateThemeModal(editor)
+  //     md.setContent(container)
+  //     md.open()
+  //   },
+  // })
 }
