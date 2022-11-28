@@ -1,16 +1,15 @@
+import type grapesjs from 'grapesjs'
 import React from 'react'
 
 type EditorContext = {
-  editor: any
+  editor?: grapesjs.Editor
 }
 
-const EditorContext = React.createContext<EditorContext>({
-  editor: null,
-})
+const EditorContext = React.createContext<EditorContext>({})
 
 type EditorProviderProps = {
   children: React.ReactNode
-  editor: any
+  editor: grapesjs.Editor
 }
 
 export const EditorProvider: React.FC<EditorProviderProps> = ({ children, editor }) => {

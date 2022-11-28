@@ -12,6 +12,9 @@ import { MenuItem } from './MenuItem'
 import { EditorProvider } from './EditorProvider/EditorProvider'
 import { Header } from './Header/Header'
 import { PanelTabs } from './PanelTabs/PanelTabs'
+import { LeftPanel } from './Panels/LeftPanel'
+import { RightPanel } from './Panels/RightPanel'
+import { PreviewProvider } from './PreviewProvider/PreviewProvider'
 
 const ContentProvider: FC<ContentProviderProps> = ({
   data,
@@ -56,36 +59,34 @@ const ContentProvider: FC<ContentProviderProps> = ({
     return (
       <div id="custom-editor" style={{ height: '100vh', margin: '0 auto' }}>
         <style>{devStyles}</style>
-        <div className="flex flex-col h-full">
-          <EditorProvider editor={editor}>
-            <Header />
-          </EditorProvider>
+        <EditorProvider editor={editor}>
+          <PreviewProvider>
+            <div className="flex flex-col h-full">
+              <Header />
 
-          <div className="flex px-8 py-6 hidden shadow-sm justify-between flex-shrink-0 z-10 relative">
-            <div className="flex items-center">
-              <a href="/" className="mr-10">
-                <Logo />
-              </a>
-              <MenuItem href="/" icon={<ArrowLeft />} disabled={true} className="mr-6">
-                Back
-              </MenuItem>
-              <MenuItem>My Website</MenuItem>
+              <div className="flex px-8 py-6 hidden shadow-sm justify-between flex-shrink-0 z-10 relative">
+                <div className="flex items-center">
+                  <a href="/" className="mr-10">
+                    <Logo />
+                  </a>
+                  <MenuItem href="/" icon={<ArrowLeft />} disabled={true} className="mr-6">
+                    Back
+                  </MenuItem>
+                  <MenuItem>My Website</MenuItem>
+                </div>
+                <div id="panel-devices" className="flex items-center relative"></div>
+                <div className="flex items-center relative">
+                  <div id="panel-options"></div>
+                </div>
+              </div>
+              <div className="flex h-[calc(100%-92px)]" id="editor-content">
+                <LeftPanel />
+                <div id="gjs"></div>
+                <RightPanel />
+              </div>
             </div>
-            <div id="panel-devices" className="flex items-center relative"></div>
-            <div className="flex items-center relative">
-              <div id="panel-options"></div>
-            </div>
-          </div>
-          <div className="flex h-[calc(100%-92px)]" id="editor-content">
-            <div className="flex w-sidebar p-3 bg-panel overflow-auto  scrollbar-hide">
-              <div id="blocks"></div>
-            </div>
-            <div id="gjs"></div>
-            <div className="flex w-sidebar bg-panel overflow-auto  scrollbar-hide">
-              <PanelTabs />
-            </div>
-          </div>
-        </div>
+          </PreviewProvider>
+        </EditorProvider>
       </div>
     )
   else

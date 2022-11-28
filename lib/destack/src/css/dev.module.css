@@ -120,7 +120,7 @@ span.gjs-pn-btn.fa.fa-mobile {
   max-width: 600px !important;
 }
 
-.btn {
+.btn, #custom-editor .gjs-btn-prim {
   @apply px-5 py-3 rounded-btn text-white inline-flex bg-black transition-all text-sm font-semibold hover:bg-gray-800 inline-flex items-center justify-center;
 }
 
@@ -281,4 +281,49 @@ span.gjs-pn-btn.fa.fa-mobile {
 
 #styles .gjs-sm-blocks-c {
   @apply bg-panel grid grid-cols-2 gap-4 py-2;
+}
+
+#custom-editor .gjs-off-prv{
+  @apply !hidden;
+}
+
+#custom-editor .gjs-mdl-dialog {
+  @apply bg-panel !max-w-4xl w-fit rounded-2xl p-6;
+}
+
+#custom-editor .gjs-export-dl {
+  @apply md:w-exportTool flex gap-4 justify-between;
+}
+
+#custom-editor .gjs-mdl-header {
+  @apply border-0;
+}
+
+#custom-editor .gjs-export-dl::after {
+  @apply hidden;
+}
+
+#custom-editor .gjs-cm-editor-c {
+  @apply w-1/2;
+}
+
+#custom-editor .gjs-export-dl #gjs-cm-title {
+  @apply text-white text-sm font-medium text-left bg-darkPanel;
+
+}
+
+#custom-editor .gjs-cm-editor {
+  @apply rounded-2xl overflow-hidden p-0;
+}
+
+#custom-editor .gjs-export-dl .cm-s-hopscotch.CodeMirror, #custom-editor .gjs-export-dl .CodeMirror-gutters {
+  @apply bg-darkPanel text-white;
+}
+
+#custom-editor .gjs-am-add-asset button {
+  @apply float-none w-auto;
+}
+
+#custom-editor .gjs-am-add-asset .gjs-am-add-field {
+  @apply float-none w-full mb-1;
 }

@@ -9,7 +9,7 @@ type IconButtonProps = {
 }
 
 export const IconButton: React.FC<IconButtonProps> = ({
-  isActive,
+  isActive = true,
   children,
   className,
   onClick,
