@@ -1,4 +1,4 @@
-import { getDefaultPanelConfig, loadPanels } from '../lib/panels'
+import { loadPanels } from '../lib/panels'
 import { loadTraits } from '../lib/traits'
 import { loadComponents } from '../lib/components'
 import { loadBlocks } from '../lib/blocks'

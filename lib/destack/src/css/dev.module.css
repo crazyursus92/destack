@@ -26,8 +26,18 @@
   @apply !text-white;
 }
 
+#custom-editor .href-next__type,
+#custom-editor .href-next__url-inputs,
+#custom-editor .href-next__email-inputs {
+  @apply mb-1;
+}
+
 #custom-editor .gjs-sm-sector .gjs-sm-field input, #custom-editor .gjs-clm-tags .gjs-sm-field input,#custom-editor  .gjs-sm-sector .gjs-clm-select input, #custom-editor .gjs-clm-tags .gjs-clm-select input,#custom-editor .gjs-sm-sector .gjs-clm-field input, #custom-editor .gjs-clm-tags .gjs-clm-field input, #custom-editor .gjs-sm-sector .gjs-sm-field select, #custom-editor .gjs-clm-tags .gjs-sm-field select, #custom-editor .gjs-sm-sector .gjs-clm-select select, #custom-editor .gjs-clm-tags .gjs-clm-select select, #custom-editor .gjs-sm-sector .gjs-clm-field select, #custom-editor .gjs-clm-tags .gjs-clm-field select,
-.gjs-field, .gjs-field-integer, #styles .gjs-sm-sector .gjs-sm-field input {
+.gjs-field, .gjs-field-integer, #styles .gjs-sm-sector .gjs-sm-field input,
+#custom-editor .href-next__type,
+#custom-editor .href-next__url-inputs,
+#custom-editor .href-next__email-inputs
+{
   border: 1px solid #3F4347 !important;
   @apply !border-fieldBorder !border !rounded-lg !text-white !bg-fieldBg;
 }
@@ -327,3 +337,16 @@ span.gjs-pn-btn.fa.fa-mobile {
 #custom-editor .gjs-am-add-asset .gjs-am-add-field {
   @apply float-none w-full mb-1;
 }
+
+#custom-editor .gjs-field-href-next {
+  @apply !border-0;
+}
+
+#custom-editor .href-next__newtab-inputs {
+  @apply inline-flex items-center gap-1;
+}
+
+#custom-editor .gjs-field-href-next > div {
+  @apply  !bg-panel;
+}
+

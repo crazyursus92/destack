@@ -11,7 +11,6 @@ import { ArrowLeft } from './icons/ArrowLeft'
 import { MenuItem } from './MenuItem'
 import { EditorProvider } from './EditorProvider/EditorProvider'
 import { Header } from './Header/Header'
-import { PanelTabs } from './PanelTabs/PanelTabs'
 import { LeftPanel } from './Panels/LeftPanel'
 import { RightPanel } from './Panels/RightPanel'
 import { PreviewProvider } from './PreviewProvider/PreviewProvider'
@@ -20,6 +19,7 @@ const ContentProvider: FC<ContentProviderProps> = ({
   data,
   showEditorInProd = false,
   standaloneServer = false,
+  headerComponent,
 }) => {
   const mounted = useRef<boolean>(false)
   const [css, setCss] = useState<string | undefined>()
@@ -62,7 +62,7 @@ const ContentProvider: FC<ContentProviderProps> = ({
         <EditorProvider editor={editor}>
           <PreviewProvider>
             <div className="flex flex-col h-full">
-              <Header />
+              <Header headerComponent={headerComponent} />
 
               <div className="flex px-8 py-6 hidden shadow-sm justify-between flex-shrink-0 z-10 relative">
                 <div className="flex items-center">

@@ -7,7 +7,9 @@ import { isJsonValid } from '../utils'
 
 const isDev = '_self' in React.createElement('div')
 
-const ContentProviderReact: FC = () => {
+const ContentProviderReact: FC<{ headerComponent?: FC<{ children: React.ReactNode }> }> = ({
+  headerComponent,
+}) => {
   const mounted = useRef<boolean>(false)
   const [loaded, setLoaded] = useState<boolean>(false)
   const [data, setData] = useState<dataType[] | undefined>()
@@ -38,7 +40,14 @@ const ContentProviderReact: FC = () => {
 
   return (
     <div style={{ height: '100%' }}>
-      {loaded && <ContentProvider data={data} standaloneServer={true} showEditorInProd={false} />}
+      {loaded && (
+        <ContentProvider
+          headerComponent={headerComponent}
+          data={data}
+          standaloneServer={true}
+          showEditorInProd={false}
+        />
+      )}
     </div>
   )
 }

@@ -336,7 +336,7 @@ export function loadFormComponents(editor: {
       el.style.backgroundColor = 'white'
 
       el.innerHTML = `
-        <select class="href-next__type" style="background-color: #f1f1f1; margin-bottom: 10px; ${fixAppearanceStyle}">
+        <select class="href-next__type" style="${fixAppearanceStyle}">
           <option value="url">URL</option>
           <option value="email">Email</option>
         </select>
@@ -437,32 +437,31 @@ export function loadFormComponents(editor: {
 
     createInput({ trait }) {
       const el = document.createElement('div')
-      el.style.backgroundColor = 'white'
 
       el.innerHTML = `
-        <select class="button-next__type" style="background-color: #f1f1f1; margin-bottom: 10px; ${fixAppearanceStyle}">
+        <select class="button-next__type gjs-field" style=" ${fixAppearanceStyle}">
           <option value="url">URL</option>
           <option value="email">Email</option>
           <option value="submit">Submit</option>
         </select>
-        <div class="button-next__url-inputs" style="background-color: #f1f1f1; margin-bottom: 10px;">
+        <div class="button-next__url-inputs gjs-field" >
           <input class="button-next__url" placeholder="Insert URL"/>
         </div>
-        <div class="button-next__email-inputs" style="background-color: #f1f1f1;">
+        <div class="button-next__email-inputs gjs-field" style="background-color: #f1f1f1;">
           <input class="button-next__email" placeholder="Insert email"/>
         </div>
         
-        <div class="button-next__newtab-inputs" style="margin-bottom: 10px;">
+        <div class="button-next__newtab-inputs gjs-field" style="margin-bottom: 10px;">
           <input style="width: auto; ${fixAppearanceStyle}" class="button-next__newtab" type="checkbox">
           <label> Open in "New Tab"</label>
         </div>
 
         <!--
-          <div class="button-next__action-inputs" style="background-color: #f1f1f1; margin-bottom: 10px;">
+          <div class="button-next__action-inputs gjs-field" >
             <input class="button-next__action" placeholder="Insert action URL"/>
           </div>
 
-          <div class="button-next__async-inputs">
+          <div class="button-next__async-inputs gjs-field">
             <input style="width: auto; ${fixAppearanceStyle}" class="button-next__async" type="checkbox">
             <label> Async</label>
           </div>
