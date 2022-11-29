@@ -130,9 +130,13 @@ span.gjs-pn-btn.fa.fa-mobile {
   max-width: 600px !important;
 }
 
-.btn, #custom-editor .gjs-btn-prim {
+.pz-btn, #custom-editor .gjs-btn-prim {
   @apply px-5 py-3 rounded-btn text-white inline-flex bg-black transition-all text-sm font-semibold hover:bg-gray-800 inline-flex items-center justify-center;
 }
+
+.pz-btn-icon {
+  @apply mr-2; 
+ }
 
 .btn-left-icon {
   @apply pl-11 bg-no-repeat relative;
@@ -350,3 +354,90 @@ span.gjs-pn-btn.fa.fa-mobile {
   @apply  !bg-panel;
 }
 
+.pz-editor-wrapper {
+  @apply flex flex-col h-full;
+}
+
+.pz-editor-content {
+  @apply flex h-[calc(100%-92px)];
+}
+
+.pz-device-controls {
+  @apply flex gap-6 pl-48;
+}
+
+.pz-device-controls-text {
+  @apply flex;
+}
+
+.pz-device-controls-text-item {
+  @apply text-textBtn text-sm ;
+}
+
+.pz-device-controls-text-item + .pz-device-controls-text-item {
+  @apply ml-2;
+}
+
+.pz-header-content-item {
+  @apply flex items-center relative;
+}
+
+.pz-header-content-save-text{
+  @apply text-textBtn text-sm opacity-30 mr-6;
+}
+
+.pz-header-code-btn {
+  @apply ml-6;
+}
+
+.pz-header-preview-btn {
+  @apply ml-5;
+}
+
+.pz-header-publish {
+  @apply ml-2;
+}
+
+.pz-icon-btn {
+ @apply w-5 h-5 relative cursor-pointer inline-flex items-center justify-center opacity-30; 
+}
+
+.pz-icon-btn--active {
+  @apply opacity-100;
+}
+
+.pz-panel-left {
+  @apply flex w-sidebar p-3 bg-panel overflow-auto  scrollbar-hide;
+}
+
+.pz-panel-right {
+  @apply flex w-sidebar bg-panel overflow-auto  scrollbar-hide;
+}
+
+.pz-panel-tab {
+  @apply w-1/3 inline-flex cursor-pointer bg-darkPanel text-panelInactiveItem justify-center items-center;
+}
+
+.pz-panel-tab--active {
+  @apply !text-white !bg-panel;
+}
+
+.pz-panel-tabs {
+  @apply w-full h-full;
+}
+
+.pz-panel-tabs-controls {
+  @apply flex w-full h-14;
+}
+
+.pz-panel-tabs-content-settings {
+  @apply p-5;
+}
+
+.pz-panel-tabs-content-settings-title {
+  @apply text-white font-semibold text-xs pb-3;
+}
+
+.pz-state-controls {
+  @apply flex gap-4;
+}

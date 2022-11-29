@@ -10,8 +10,8 @@ type ButtonProps = {
 
 export const Button: React.FC<ButtonProps> = ({ children, className, onClick, icon }) => {
   return (
-    <button className={clsx('btn', className)} onClick={onClick}>
-      {icon ? <i className="mr-2">{icon}</i> : null}
+    <button className={clsx('pz-btn', className)} onClick={onClick}>
+      {icon ? <i className="pz-btn-icon">{icon}</i> : null}
 
       {children}
     </button>

@@ -19,15 +19,15 @@ export const DeviceControls: React.FC = () => {
   const onChangeDevice = useCallback(
     (device: Devices) => {
       setCurrentDevice(device)
-      editor.setDevice(device)
-      console.log(editor.DeviceManager.get(device)?.width, editor.DeviceManager.get(device))
-      setWithText(editor.DeviceManager.get(device)?.attributes?.width || 'auto')
+      editor?.setDevice(device)
+      console.log(editor?.DeviceManager.get(device)?.width, editor?.DeviceManager.get(device))
+      setWithText(editor?.DeviceManager.get(device)?.attributes?.width || 'auto')
     },
     [editor],
   )
 
   return (
-    <div className="flex gap-6 pl-48">
+    <div className="pz-device-controls">
       <IconButton
         onClick={() => onChangeDevice(Devices.Desktop)}
         isActive={currentDevice === Devices.Desktop}
@@ -46,9 +46,9 @@ export const DeviceControls: React.FC = () => {
       >
         <Mobile />
       </IconButton>
-      <div className="flex ">
-        <div className="text-textBtn text-sm mr-2">{withText}</div>
-        <div className="text-textBtn text-sm">100%</div>
+      <div className="pz-device-controls-text  ">
+        <div className="pz-device-controls-text-item">{withText}</div>
+        <div className="pz-device-controls-text-item">100%</div>
       </div>
     </div>
   )

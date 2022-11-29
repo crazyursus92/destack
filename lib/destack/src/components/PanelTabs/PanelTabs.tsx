@@ -15,8 +15,8 @@ export const PanelTabs: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<Tabs>(Tabs.Styles)
 
   return (
-    <div className="w-full h-full">
-      <div className="flex w-full h-14">
+    <div className="pz-panel-tabs">
+      <div className="pz-panel-tabs-controls ">
         <PanelTab onClick={() => setActiveTab(Tabs.Styles)} isActive={activeTab === Tabs.Styles}>
           <Brash />
         </PanelTab>
@@ -32,8 +32,10 @@ export const PanelTabs: React.FC = () => {
           <div id="selectors"></div>
           <div id="styles"></div>
         </div>
-        <div className={clsx({ hidden: activeTab !== Tabs.Traits }, 'p-5')}>
-          <div className="text-white font-semibold text-xs pb-3">Component settings</div>
+        <div
+          className={clsx({ hidden: activeTab !== Tabs.Traits }, 'pz-panel-tabs-content-settings')}
+        >
+          <div className="pz-panel-tabs-content-settings-title">Component settings</div>
           <div id="traits"></div>
         </div>
         <div className={clsx({ hidden: activeTab !== Tabs.Layers })} id="layers"></div>

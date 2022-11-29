@@ -7,7 +7,7 @@ export const RightPanel: React.FC = () => {
   const { isPreview } = usePreviewContent()
   return (
     <div
-      className={clsx('flex w-sidebar bg-panel overflow-auto  scrollbar-hide', {
+      className={clsx('pz-panel-right', {
         hidden: isPreview,
       })}
     >

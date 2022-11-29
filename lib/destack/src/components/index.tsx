@@ -5,6 +5,7 @@ import { Logo } from './icons/Logo'
 
 import devStyles from '../css/dist/dev.module.css'
 import prodStyles from '../css/prod.module.css'
+import 'grapesjs/dist/css/grapes.min.css'
 
 import { tailwindCssUrl } from '../../server/config'
 import { ArrowLeft } from './icons/ArrowLeft'
@@ -61,25 +62,9 @@ const ContentProvider: FC<ContentProviderProps> = ({
         <style>{devStyles}</style>
         <EditorProvider editor={editor}>
           <PreviewProvider>
-            <div className="flex flex-col h-full">
+            <div className="pz-editor-wrapper">
               <Header headerComponent={headerComponent} />
-
-              <div className="flex px-8 py-6 hidden shadow-sm justify-between flex-shrink-0 z-10 relative">
-                <div className="flex items-center">
-                  <a href="/" className="mr-10">
-                    <Logo />
-                  </a>
-                  <MenuItem href="/" icon={<ArrowLeft />} disabled={true} className="mr-6">
-                    Back
-                  </MenuItem>
-                  <MenuItem>My Website</MenuItem>
-                </div>
-                <div id="panel-devices" className="flex items-center relative"></div>
-                <div className="flex items-center relative">
-                  <div id="panel-options"></div>
-                </div>
-              </div>
-              <div className="flex h-[calc(100%-92px)]" id="editor-content">
+              <div className="pz-editor-content" id="editor-content">
                 <LeftPanel />
                 <div id="gjs"></div>
                 <RightPanel />

@@ -10,21 +10,21 @@ export const HeaderEditorContent: React.FC = () => {
   const { isPreview, setIsPreview } = usePreviewContent()
   return (
     <>
-      <div className="flex items-center relative">
+      <div className="pz-header-content-item">
         <DeviceControls />
       </div>
-      <div className="flex items-center relative">
-        <span className="text-textBtn text-sm opacity-30 mr-6">Saved</span>
+      <div className="pz-header-content-item">
+        <span className="pz-header-content-save-text">Saved</span>
         <StateControls />
-        <CodeButton className="ml-6" />
+        <CodeButton className="pz-header-code-btn" />
         <Button
           icon={isPreview ? undefined : <Eye />}
-          className="ml-5"
+          className="pz-header-preview-btn"
           onClick={() => setIsPreview(!isPreview)}
         >
           {isPreview ? 'Edit' : 'Preview'}
         </Button>
-        <Button className="btn-accent ml-2">Publish</Button>
+        <Button className="btn-accent pz-header-publish">Publish</Button>
       </div>
     </>
   )

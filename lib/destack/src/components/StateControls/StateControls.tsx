@@ -7,7 +7,7 @@ import { Undo } from '../icons/Undo'
 export const StateControls: React.FC = () => {
   const { hasRedo, hasUndo, undo, redo } = useUndoManager()
   return (
-    <div className="flex gap-4">
+    <div className="pz-state-controls">
       <IconButton isActive={hasUndo} onClick={undo}>
         <Undo />
       </IconButton>

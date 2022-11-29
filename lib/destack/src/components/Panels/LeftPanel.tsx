@@ -7,7 +7,7 @@ export const LeftPanel: React.FC = () => {
 
   return (
     <div
-      className={clsx('flex w-sidebar p-3 bg-panel overflow-auto  scrollbar-hide', {
+      className={clsx('pz-panel-left', {
         hidden: isPreview,
       })}
     >
