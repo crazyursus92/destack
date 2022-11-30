@@ -82,6 +82,9 @@ const editorOptions = {
   selectorManager: { escapeName, appendTo: '#selectors' },
   container: '#gjs',
   height: '100%',
+  domComponents: {
+    appendTo: '#components',
+  },
   layerManager: {
     appendTo: '#layers',
   },

@@ -13,6 +13,7 @@ type EditorProviderProps = {
 }
 
 export const EditorProvider: React.FC<EditorProviderProps> = ({ children, editor }) => {
+  window.EDITOR = editor
   return <EditorContext.Provider value={{ editor }}>{children}</EditorContext.Provider>
 }
 

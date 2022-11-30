@@ -37,6 +37,7 @@ export const PanelTabs: React.FC = () => {
         >
           <div className="pz-panel-tabs-content-settings-title">Component settings</div>
           <div id="traits"></div>
+          <div id="components"></div>
         </div>
         <div className={clsx({ hidden: activeTab !== Tabs.Layers })} id="layers"></div>
       </div>

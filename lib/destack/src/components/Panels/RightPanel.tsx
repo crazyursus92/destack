@@ -8,7 +8,7 @@ export const RightPanel: React.FC = () => {
   return (
     <div
       className={clsx('pz-panel-right', {
-        hidden: isPreview,
+        'pz-panel--hidden': isPreview,
       })}
     >
       <PanelTabs />

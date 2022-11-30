@@ -2171,12 +2171,12 @@ video {
   border-left-width: 4px;
 }
 
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
 }
 
 .border-b-4 {
@@ -2816,6 +2816,16 @@ video {
   padding-right: 1.25rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -2864,16 +2874,6 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .py-10 {
@@ -4323,11 +4323,16 @@ span.gjs-pn-btn.fa.fa-mobile {
 
 #styles .gjs-sm-title {
   position: relative !important;
+  border-bottom-width: 1px !important;
   --tw-border-opacity: 1 !important;
   border-color: rgb(63 67 71 / var(--tw-border-opacity)) !important;
   --tw-bg-opacity: 1 !important;
   background-color: rgb(42 44 48 / var(--tw-bg-opacity)) !important;
   background-color: transparent !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
   font-weight: 500 !important;
@@ -4565,6 +4570,10 @@ span.gjs-pn-btn.fa.fa-mobile {
 }
 
 .pz-panel-right::-webkit-scrollbar {
+  display: none;
+}
+
+.pz-panel--hidden {
   display: none;
 }
 

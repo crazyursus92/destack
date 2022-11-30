@@ -8,8 +8,6 @@ import prodStyles from '../css/prod.module.css'
 import 'grapesjs/dist/css/grapes.min.css'
 
 import { tailwindCssUrl } from '../../server/config'
-import { ArrowLeft } from './icons/ArrowLeft'
-import { MenuItem } from './MenuItem'
 import { EditorProvider } from './EditorProvider/EditorProvider'
 import { Header } from './Header/Header'
 import { LeftPanel } from './Panels/LeftPanel'

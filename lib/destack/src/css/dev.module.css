@@ -273,7 +273,7 @@ span.gjs-pn-btn.fa.fa-mobile {
 
 
 #styles .gjs-sm-title {
-  @apply text-sm bg-panel font-medium border-panelBorder  bg-transparent relative !important;
+  @apply text-sm bg-panel font-medium border-panelBorder border-b bg-transparent relative py-2 px-3 !important;
 }
 
 #styles .gjs-sm-block-category {
@@ -412,6 +412,10 @@ span.gjs-pn-btn.fa.fa-mobile {
 
 .pz-panel-right {
   @apply flex w-sidebar bg-panel overflow-auto  scrollbar-hide;
+}
+
+.pz-panel--hidden {
+  @apply hidden;
 }
 
 .pz-panel-tab {

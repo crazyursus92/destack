@@ -8,7 +8,7 @@ export const LeftPanel: React.FC = () => {
   return (
     <div
       className={clsx('pz-panel-left', {
-        hidden: isPreview,
+        'pz-panel--hidden': isPreview,
       })}
     >
       <div id="blocks"></div>
